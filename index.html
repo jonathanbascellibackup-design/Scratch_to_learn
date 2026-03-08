@@ -33,6 +33,15 @@
     text-transform: uppercase;">
     Scratch to Learn
 </h1>
+
+<div style="text-align: center; margin: 20px 0;">
+    <input type="text" id="searchInput" placeholder="Cerca progetto (es. Past)..." 
+    style="padding: 10px 20px; width: 250px; border-radius: 20px; border: 2px solid #00d2ff; outline: none; font-family: 'Courier New', monospace;">
+    <button onclick="vaiAlProgetto()" style="padding: 10px 20px; border-radius: 20px; background: #00d2ff; color: white; border: none; cursor: pointer; font-weight: bold; font-family: 'Courier New', monospace;">
+        VAI
+    </button>
+</div>
+
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 
@@ -114,7 +123,7 @@ function inviaDonazione() {
 
 <hr style="border: 1px solid #eee; margin: 60px 0;">
 
-<h2 style="
+<h2 class="titolo-progetto" style="
     text-align: center; 
     font-family: 'Courier New', monospace; 
     font-size: 4rem; 
@@ -154,6 +163,27 @@ function inviaDonazione() {
         VAI AL PROGETTO
     </a>
 </div>
+
+<script>
+function vaiAlProgetto() {
+    let query = document.getElementById('searchInput').value.toLowerCase();
+    let titoli = document.querySelectorAll('.titolo-progetto');
+    let trovato = false;
+
+    titoli.forEach(titolo => {
+        if (titolo.innerText.toLowerCase().includes(query) && query !== "") {
+            titolo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            titolo.style.textShadow = "0 0 20px #00d2ff";
+            setTimeout(() => { titolo.style.textShadow = "none"; }, 2000);
+            trovato = true;
+        }
+    });
+
+    if (!trovato && query !== "") {
+        alert("Progetto non trovato! Prova con un'altra parola.");
+    }
+}
+</script>
 
 </body>
 </html>
