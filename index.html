@@ -18,6 +18,12 @@
             margin: 0;
             padding: 0;
         }
+
+        /* Stile per i suggerimenti della ricerca */
+        #risultatiRicerca div:hover {
+            background-color: #f0fbff !important;
+            color: #00d2ff !important;
+        }
     </style>
 </head>
 <body>
@@ -34,12 +40,25 @@
     Scratch to Learn
 </h1>
 
-<div style="text-align: center; margin: 20px 0;">
-    <input type="text" id="searchInput" placeholder="Cerca progetto (es. Past)..." 
-    style="padding: 10px 20px; width: 250px; border-radius: 20px; border: 2px solid #00d2ff; outline: none; font-family: 'Courier New', monospace;">
-    <button onclick="vaiAlProgetto()" style="padding: 10px 20px; border-radius: 20px; background: #00d2ff; color: white; border: none; cursor: pointer; font-weight: bold; font-family: 'Courier New', monospace;">
-        VAI
-    </button>
+<div style="text-align: center; margin: 20px 0; position: relative; max-width: 350px; margin-left: auto; margin-right: auto; z-index: 1000;">
+    <input type="text" id="searchInput" onkeyup="cercaProgetti()" placeholder="Cerca progetto (es. Past)..." 
+    style="padding: 12px 20px; width: 100%; border-radius: 25px; border: 2px solid #00d2ff; outline: none; font-family: 'Courier New', monospace; box-sizing: border-box; box-shadow: 0 2px 10px rgba(0, 210, 255, 0.2);">
+    
+    <div id="risultatiRicerca" style="
+        position: absolute; 
+        top: 50px; 
+        left: 0; 
+        right: 0; 
+        background: white; 
+        border: 1px solid #00d2ff; 
+        border-radius: 15px; 
+        display: none; 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        text-align: left;
+        max-height: 250px;
+        overflow-y: auto;
+        padding: 5px 0;">
+    </div>
 </div>
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -107,20 +126,6 @@
     </div>
 </div>
 
-<script>
-function inviaDonazione() {
-    var address = document.getElementById('walletAddress').innerText.trim();
-    var amount = document.getElementById('btcAmount').value;
-    var btcValue = amount / 1000;
-    
-    if(amount > 0) {
-        window.location.href = "bitcoin:" + address + "?amount=" + btcValue;
-    } else {
-        alert("Inserisci un importo valido prima di donare!");
-    }
-}
-</script> 
-
 <hr style="border: 1px solid #eee; margin: 60px 0;">
 
 <h2 class="titolo-progetto" style="
@@ -165,24 +170,68 @@ function inviaDonazione() {
 </div>
 
 <script>
-function vaiAlProgetto() {
-    let query = document.getElementById('searchInput').value.toLowerCase();
-    let titoli = document.querySelectorAll('.titolo-progetto');
-    let trovato = false;
+// FUNZIONE DONAZIONE
+function inviaDonazione() {
+    var address = document.getElementById('walletAddress').innerText.trim();
+    var amount = document.getElementById('btcAmount').value;
+    var btcValue = amount / 1000;
+    
+    if(amount > 0) {
+        window.location.href = "bitcoin:" + address + "?amount=" + btcValue;
+    } else {
+        alert("Inserisci un importo valido prima di donare!");
+    }
+}
 
-    titoli.forEach(titolo => {
-        if (titolo.innerText.toLowerCase().includes(query) && query !== "") {
-            titolo.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            titolo.style.textShadow = "0 0 20px #00d2ff";
-            setTimeout(() => { titolo.style.textShadow = "none"; }, 2000);
-            trovato = true;
+// FUNZIONE RICERCA SMART (OPZIONE B)
+function cercaProgetti() {
+    let input = document.getElementById('searchInput');
+    let filter = input.value.toLowerCase();
+    let boxRisultati = document.getElementById('risultatiRicerca');
+    let titoli = document.querySelectorAll('.titolo-progetto');
+    
+    boxRisultati.innerHTML = '';
+    
+    if (filter === "") {
+        boxRisultati.style.display = "none";
+        return;
+    }
+
+    let trovati = 0;
+    titoli.forEach((titolo) => {
+        let testoTitolo = titolo.innerText;
+        if (testoTitolo.toLowerCase().includes(filter)) {
+            trovati++;
+            let elemento = document.createElement('div');
+            elemento.innerHTML = testoTitolo;
+            elemento.style.padding = "12px 20px";
+            elemento.style.cursor = "pointer";
+            elemento.style.fontFamily = "'Courier New', monospace";
+            elemento.style.fontSize = "0.9em";
+            elemento.style.transition = "0.2s";
+            
+            elemento.onclick = function() {
+                titolo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                titolo.style.transition = "0.5s";
+                titolo.style.textShadow = "0 0 20px #00d2ff";
+                setTimeout(() => { titolo.style.textShadow = "none"; }, 2000);
+                boxRisultati.style.display = "none";
+                input.value = testoTitolo;
+            };
+            
+            boxRisultati.appendChild(elemento);
         }
     });
 
-    if (!trovato && query !== "") {
-        alert("Progetto non trovato! Prova con un'altra parola.");
-    }
+    boxRisultati.style.display = trovati > 0 ? "block" : "none";
 }
+
+// Chiude la lista se clicchi fuori dall'input
+document.addEventListener('click', function(e) {
+    if (e.target.id !== 'searchInput') {
+        document.getElementById('risultatiRicerca').style.display = "none";
+    }
+});
 </script>
 
 </body>
