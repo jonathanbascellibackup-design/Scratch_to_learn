@@ -1,11 +1,11 @@
 <style>
     :root {
-        color-scheme: light; /* Forza il browser a ignorare la dark mode dell'utente */
+        color-scheme: light; 
     }
 
     body {
-        background-color: #ffffff !important; /* Bianco assoluto, sempre */
-        color: #000000 !important;           /* Testo nero assoluto, sempre */
+        background-color: #ffffff !important; 
+        color: #000000 !important;           
         margin: 0;
         padding: 0;
     }
@@ -22,24 +22,19 @@
     text-transform: uppercase;">
     Scratch to Learn
 </h1>
-</script>
+
 <p style="
     text-align: center; 
     font-family: 'Arial', sans-serif; 
-    font-size: 2rem; 
-    color: #00000; 
+    font-size: 1.5rem; 
+    color: #000000; 
     margin-bottom: 40px;
-    letter-spacing: 1px;">
-    
-
-
-Benvenuti su Scratch to Learn, il ponte digitale tra il coding e l'aula. Metto a disposizione dei docenti una raccolta selezionata di progetti Scratch interattivi, progettati per trasformare le lezioni in esperienze vive. Dalla matematica alle scienze, ogni progetto è pensato per accendere la curiosità degli alunni e semplificare il lavoro dei professori.
-
-
-
-
+    letter-spacing: 1px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;">
+    Benvenuti su Scratch to Learn, il ponte digitale tra il coding e l'aula. Metto a disposizione dei docenti una raccolta selezionata di progetti Scratch interattivi, progettati per trasformare le lezioni in esperienze vive. Dalla matematica alle scienze, ogni progetto è pensato per accendere la curiosità degli alunni e semplificare il lavoro dei professori.
 </p>
-
 
 <div style="
     margin: 50px auto; 
@@ -92,12 +87,8 @@ Benvenuti su Scratch to Learn, il ponte digitale tra il coding e l'aula. Metto a
 
 <script>
 function inviaDonazione() {
-    // 1. Prendi l'indirizzo dal testo della pagina
     var address = document.getElementById('walletAddress').innerText.trim();
-    // 2. Prendi l'importo scritto dall'utente
     var amount = document.getElementById('btcAmount').value;
-    
-    // 3. Crea il link Bitcoin (trasformando mBTC in BTC dividendo per 1000)
     var btcValue = amount / 1000;
     
     if(amount > 0) {
@@ -106,38 +97,39 @@ function inviaDonazione() {
         alert("Inserisci un importo valido prima di donare!");
     }
 }
-<h1 style="
+</script> <hr style="border: 1px solid #eee; margin: 60px 0;">
+
+<h2 style="
     text-align: center; 
     font-family: 'Courier New', monospace; 
-    font-size: 5rem; 
-    color: #fff; 
-    text-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff, 0 0 40px #00d2ff; 
+    font-size: 4rem; 
+    color: #000; 
     margin-top: 40px;
-    letter-spacing: 5px;
     text-transform: uppercase;">
     PAST SIMPLE
-</h1>
+</h2>
+
 <p style="
     text-align: center; 
     font-family: 'Helvetica', 'Arial', sans-serif; 
-    font-size: 1.1rem; /* Ridotto per essere più elegante */
+    font-size: 1.1rem; 
     color: #000000; 
     line-height: 1.6;
     max-width: 800px;
-    margin: 0 auto 50px auto;
-    letter-spacing: 0.5px;
+    margin: 0 auto 30px auto;
     padding: 0 20px;">
-    Questo progetto interattivo su Scratch è uno strumento pratico e immediato per affrontare lo studio del Past Simple in classe o a casa. Il software offre una lavagna virtuale versatile, ideale per i docenti che vogliono proiettare schemi chiari durante la spiegazione o per gli studenti che desiderano uno spazio digitale dove visualizzare le regole principali. Il cuore dell'attività è il quiz con sistema di trascinamento delle caselle: un esercizio di logica e grammatica dove l'alunno deve posizionare correttamente gli elementi per completare le frasi al passato. Al termine dell'esercizio, il sistema calcola automaticamente il voto finale in base alle risposte fornite, permettendo allo studente di misurare immediatamente la propria preparazione in modo autonomo. È una risorsa pronta all'uso, pensata per rendere lo studio della lingua inglese più dinamico e strutturato attraverso l'interazione diretta con il codice.
+    Questo progetto interattivo su Scratch è uno strumento pratico e immediato per affrontare lo studio del Past Simple in classe o a casa. Il software offre una lavagna virtuale versatile, ideale per i docenti che vogliono proiettare schemi chiari durante la spiegazione o per gli studenti che desiderano uno spazio digitale dove visualizzare le regole principali. Il cuore dell'attività è il quiz con sistema di trascinamento delle caselle: un esercizio di logica e grammatica dove l'alunno deve posizionare correttamente gli elementi per completare le frasi al passato. Al termine dell'esercizio, il sistema calcola automaticamente il voto finale in base alle risposte fornite, permettendo allo studente di misurare immediatamente la propria preparazione in modo autonomo.
 </p>
+
 <div style="text-align: center; margin: 40px 0;">
     <a href="https://scratch.mit.edu/projects/1181325605" style="
         background: #00d2ff;
         color: #ffffff;
         border: 3px solid #00d2ff;
-        padding: 50px 100px; /* Aumentato il volume del tasto */
+        padding: 30px 80px;
         font-family: 'Courier New', monospace;
         font-weight: bold;
-        font-size: 1.5rem;   /* Testo del tasto più grande */
+        font-size: 1.5rem;   
         text-decoration: none;
         display: inline-block;
         box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
@@ -147,5 +139,3 @@ function inviaDonazione() {
         VAI AL PROGETTO
     </a>
 </div>
-
-
