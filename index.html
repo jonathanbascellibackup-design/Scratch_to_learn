@@ -109,24 +109,40 @@
         <code id="walletAddress" style="display: block; background: #222; color: #00ff88; padding: 10px; font-size: 0.8em; border: 1px solid #333; word-break: break-all;">bc1q07qywwssag8zlc5vaw036a66qrh5zchtqs2tej</code>
     </div>
 </div>
-<footer style="
-    margin-top: 80px; 
-    padding: 20px 0; 
+<div id="smart-license-footer" style="
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    background-color: rgba(255, 255, 255, 0.95); /* Sfondo bianco semi-trasparente */
     border-top: 1px solid #eee; 
     text-align: center; 
     font-family: 'Arial', sans-serif; 
     color: #888; 
-    font-size: 0.8rem;">
-    
-    <p style="margin-bottom: 5px;">
+    font-size: 0.8rem;
+    padding: 15px 0;
+    z-index: 9999; /* Sta SOPRA a tutto il resto */
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05); /* Un'ombra leggera per staccare */
+">
+    <p style="margin: 0 0 5px 0;">
         © 2026 <strong>Scratch to Learn</strong> - Jonathan Bascelli
     </p>
     
-    <p>
-        Distribuito con <a href="LICENSE" style="color: #00d2ff; text-decoration: none; font-weight: bold;">Licenza MIT</a>. 
-        Consulta il file LICENSE per i dettagli.
+    <p style="margin: 0;">
+        Distribuito con <a href="https://github.com/jonathanbascellibackup-design/Scratch_to_learn/blob/main/LICENSE" 
+        target="_blank" 
+        style="color: #00d2ff; text-decoration: none; font-weight: bold;">Licenza MIT</a>. 
+        Clicca per i dettagli.
     </p>
-</footer>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var footerHeight = document.getElementById('smart-license-footer').offsetHeight;
+        document.body.style.paddingBottom = (footerHeight + 20) + 'px';
+    });
+</script>
+
 
 
 <hr style="border: 1px solid #eee; margin: 60px 0;">
