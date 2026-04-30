@@ -63,16 +63,29 @@
 <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
     <img src="1000133174" alt="banner annuncio" style="width: 400px; height: auto;">
 </div>
-<div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
-    <img src="favicon.ico" alt="Logo Scratch to Learn" style="width: 150px; height: auto;">
-</div>
+<div style="
+    display: inline-block;
+    padding: 40px 60px;
+    background-image: url('favicon.ico'); /* <-- metti qui la tua immagine */
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+">
 
-<h1 style="
-    text-align: center; font-family: 'Courier New', monospace; font-size: 5rem; 
-    color: #fff; text-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff, 0 0 40px #00d2ff; 
-    margin-top: 0px; letter-spacing: 5px; text-transform: uppercase;">
-    Scratch to Learn
-</h1>
+    <h1 style="
+        text-align: center;
+        font-family: 'Courier New', monospace;
+        font-size: 5rem;
+        color: #fff;
+        text-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff, 0 0 40px #00d2ff;
+        margin: 0;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+    ">
+        Scratch to Learn
+    </h1>
+
+</div>
 
 <div style="text-align: center; margin: 20px 0; position: relative; max-width: 350px; margin-left: auto; margin-right: auto; z-index: 1000;">
     <input type="text" id="searchInput" onkeyup="cercaProgetti()" placeholder="Cerca progetto (es. Past)..." 
